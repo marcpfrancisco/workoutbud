@@ -1,11 +1,13 @@
 # Project Progress Tracker
 
 ## Current Status
+
 **Phase 1 complete** — Ready to generate Supabase types, then moving to Phase 2.
 
 ---
 
 ## Phase 1: Core Foundation 🏗️
+
 - [x] Initialize Next.js 16 with PWA support (`@ducanh2912/next-pwa`)
 - [x] Configure Tailwind v4 with holographic design system (`app/globals.css`)
 - [x] Setup PWA manifest (`public/manifest.json`)
@@ -23,6 +25,7 @@
 ---
 
 ## Phase 2: The Hologram Library 🧞
+
 - [ ] Design SVG Human Body Map — front + back views, interactive muscle paths
 - [ ] Implement per-muscle highlight and pulse animation (`motion` + GSAP)
 - [ ] Build Exercise Library page — search, filter by muscle/category
@@ -33,6 +36,7 @@
 ---
 
 ## Phase 3: Workout Execution ⚡
+
 - [ ] Zustand workout session store (`modules/workout/store.ts`)
 - [ ] Build Active Workout Player — full-screen, distraction-free layout
 - [ ] Rest timer with Vibration API haptic feedback
@@ -44,6 +48,7 @@
 ---
 
 ## Phase 4: Sync & Polish ✨
+
 - [ ] Background Sync — full retry logic + conflict resolution
 - [ ] Routine Builder with drag-and-drop reordering
 - [ ] Dashboard — muscle recovery body map + last session summary

@@ -2,21 +2,21 @@
 
 ## 1. Tech Stack
 
-| Layer | Package | Notes |
-|---|---|---|
-| Framework | Next.js 16 (App Router) | RSC-first, no Pages Router |
-| Runtime | React 19 | Server Components by default |
-| Language | TypeScript 5 (strict) | Zero `any` policy |
-| Styling | Tailwind CSS 4 | CSS-first config via `@theme` in globals.css |
-| Component Animation | `motion` v12 | Formerly Framer Motion — import from `motion/react` |
-| Timeline Animation | GSAP 3 | SVG sequences, multi-element timelines |
-| Auth / Database | Supabase (PostgreSQL + RLS) | Auth, storage, real-time |
-| Global State | Zustand 5 | Session state only |
-| Server Cache | TanStack Query 5 | Supabase data in Client Components |
-| Offline DB | Dexie 4 (IndexedDB) | Primary write store |
-| PWA | `@ducanh2912/next-pwa` 10 | Service worker + caching strategy |
-| Validation | Zod 4 | All system boundaries |
-| Target Platform | Mobile-only PWA | Desktop blocked via middleware in production |
+| Layer               | Package                     | Notes                                               |
+| ------------------- | --------------------------- | --------------------------------------------------- |
+| Framework           | Next.js 16 (App Router)     | RSC-first, no Pages Router                          |
+| Runtime             | React 19                    | Server Components by default                        |
+| Language            | TypeScript 5 (strict)       | Zero `any` policy                                   |
+| Styling             | Tailwind CSS 4              | CSS-first config via `@theme` in globals.css        |
+| Component Animation | `motion` v12                | Formerly Framer Motion — import from `motion/react` |
+| Timeline Animation  | GSAP 3                      | SVG sequences, multi-element timelines              |
+| Auth / Database     | Supabase (PostgreSQL + RLS) | Auth, storage, real-time                            |
+| Global State        | Zustand 5                   | Session state only                                  |
+| Server Cache        | TanStack Query 5            | Supabase data in Client Components                  |
+| Offline DB          | Dexie 4 (IndexedDB)         | Primary write store                                 |
+| PWA                 | `@ducanh2912/next-pwa` 10   | Service worker + caching strategy                   |
+| Validation          | Zod 4                       | All system boundaries                               |
+| Target Platform     | Mobile-only PWA             | Desktop blocked via middleware in production        |
 
 ---
 
@@ -87,39 +87,43 @@ Sync Outbox (queued operation record)
 ## 5. Supabase Schema
 
 ### `exercises`
-| Column | Type | Notes |
-|---|---|---|
-| `id` | `uuid` PK | `gen_random_uuid()` |
-| `name` | `text` | |
-| `muscle_groups` | `text[]` | Array of SVG muscle IDs |
-| `category` | `text` | `push` / `pull` / `legs` / `core` |
-| `gif_url` | `text` | nullable |
-| `instructions` | `text` | nullable |
-| `is_global` | `boolean` | Global library vs user-created |
-| `user_id` | `uuid` | null for global exercises |
-| `created_at` | `timestamptz` | |
+
+| Column          | Type          | Notes                             |
+| --------------- | ------------- | --------------------------------- |
+| `id`            | `uuid` PK     | `gen_random_uuid()`               |
+| `name`          | `text`        |                                   |
+| `muscle_groups` | `text[]`      | Array of SVG muscle IDs           |
+| `category`      | `text`        | `push` / `pull` / `legs` / `core` |
+| `gif_url`       | `text`        | nullable                          |
+| `instructions`  | `text`        | nullable                          |
+| `is_global`     | `boolean`     | Global library vs user-created    |
+| `user_id`       | `uuid`        | null for global exercises         |
+| `created_at`    | `timestamptz` |                                   |
 
 ### `routines`
-| Column | Type | Notes |
-|---|---|---|
-| `id` | `uuid` PK | |
-| `user_id` | `uuid` | FK → `auth.users` |
-| `name` | `text` | |
-| `exercises` | `jsonb` | `RoutineExercise[]` |
-| `created_at` | `timestamptz` | |
-| `updated_at` | `timestamptz` | |
+
+| Column       | Type          | Notes               |
+| ------------ | ------------- | ------------------- |
+| `id`         | `uuid` PK     |                     |
+| `user_id`    | `uuid`        | FK → `auth.users`   |
+| `name`       | `text`        |                     |
+| `exercises`  | `jsonb`       | `RoutineExercise[]` |
+| `created_at` | `timestamptz` |                     |
+| `updated_at` | `timestamptz` |                     |
 
 ### `workout_logs`
-| Column | Type | Notes |
-|---|---|---|
-| `id` | `uuid` PK | |
-| `user_id` | `uuid` | FK → `auth.users` |
-| `routine_id` | `uuid` | FK → `routines` |
-| `started_at` | `timestamptz` | |
-| `completed_at` | `timestamptz` | nullable |
-| `sets` | `jsonb` | `SetLog[]` |
+
+| Column         | Type          | Notes             |
+| -------------- | ------------- | ----------------- |
+| `id`           | `uuid` PK     |                   |
+| `user_id`      | `uuid`        | FK → `auth.users` |
+| `routine_id`   | `uuid`        | FK → `routines`   |
+| `started_at`   | `timestamptz` |                   |
+| `completed_at` | `timestamptz` | nullable          |
+| `sets`         | `jsonb`       | `SetLog[]`        |
 
 ### RLS Policy Pattern (applies to all tables)
+
 ```sql
 -- Read
 CREATE POLICY "own_data_select" ON table_name
@@ -158,12 +162,12 @@ Ephemeral UI state? (modal open, selected tab, accordion expanded)
 
 ## 7. Server Actions vs Route Handlers
 
-| Scenario | Use |
-|---|---|
+| Scenario                                | Use           |
+| --------------------------------------- | ------------- |
 | Form submissions from Client Components | Server Action |
-| Mutations triggered from RSC | Server Action |
-| Webhook receivers (third-party) | Route Handler |
-| Proxying external APIs | Route Handler |
+| Mutations triggered from RSC            | Server Action |
+| Webhook receivers (third-party)         | Route Handler |
+| Proxying external APIs                  | Route Handler |
 
 Standard CRUD against Supabase does not use Route Handlers — call Supabase directly from Client Components (via TanStack Query) or Server Actions.
 
@@ -172,12 +176,14 @@ Standard CRUD against Supabase does not use Route Handlers — call Supabase dir
 ## 8. Animation Architecture
 
 ### `motion` handles:
+
 - Component entrance / exit
 - Layout transitions
 - Interactive feedback (tap, press, swipe)
 - Per-muscle SVG pulse highlights
 
 ### GSAP handles:
+
 - Multi-element sequenced timelines
 - SVG path draw animations (body map reveal)
 - Scroll-triggered effects
@@ -189,13 +195,13 @@ One animation owner per DOM element — never mix both on the same target.
 
 ## 9. Performance Budget
 
-| Metric | Target |
-|---|---|
-| Lighthouse Performance (mobile) | ≥ 90 |
-| First Contentful Paint | < 1.5s on 4G |
-| Animation frame rate | 60fps sustained |
-| Time to Interactive | < 3s on mid-range Android |
-| Offline boot (from SW cache) | < 500ms |
+| Metric                          | Target                    |
+| ------------------------------- | ------------------------- |
+| Lighthouse Performance (mobile) | ≥ 90                      |
+| First Contentful Paint          | < 1.5s on 4G              |
+| Animation frame rate            | 60fps sustained           |
+| Time to Interactive             | < 3s on mid-range Android |
+| Offline boot (from SW cache)    | < 500ms                   |
 
 Only animate `transform` and `opacity` — compositor-only. Never animate layout properties.
 

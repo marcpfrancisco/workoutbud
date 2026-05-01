@@ -46,16 +46,12 @@ export default function LoginPage() {
           <h1 className="text-2xl font-bold text-neon-cyan text-glow-cyan tracking-tight">
             WorkoutBud
           </h1>
-          <p className="text-muted text-xs font-mono tracking-widest uppercase">
-            Sign In
-          </p>
+          <p className="text-muted text-xs font-mono tracking-widest uppercase">Sign In</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
-            <label className="text-xs text-muted font-mono uppercase tracking-wider">
-              Email
-            </label>
+            <label className="text-xs text-muted font-mono uppercase tracking-wider">Email</label>
             <input
               type="email"
               value={email}
@@ -82,9 +78,7 @@ export default function LoginPage() {
             />
           </div>
 
-          {error && (
-            <p className="text-red-400 text-xs font-mono">{error}</p>
-          )}
+          {error && <p className="text-red-400 text-xs font-mono">{error}</p>}
 
           <button
             type="submit"
@@ -97,10 +91,7 @@ export default function LoginPage() {
 
         <p className="text-center text-muted text-xs">
           No account?{" "}
-          <Link
-            href="/signup"
-            className="text-neon-cyan hover:opacity-80 transition-opacity"
-          >
+          <Link href="/signup" className="text-neon-cyan hover:opacity-80 transition-opacity">
             Sign up
           </Link>
         </p>

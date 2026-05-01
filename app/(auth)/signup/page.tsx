@@ -41,13 +41,10 @@ export default function SignupPage() {
         >
           <div className="holo-border glow-cyan rounded-holo p-8 text-center space-y-4">
             <div className="text-4xl">✉️</div>
-            <h2 className="text-lg font-bold text-neon-cyan text-glow-cyan">
-              Check your email
-            </h2>
+            <h2 className="text-lg font-bold text-neon-cyan text-glow-cyan">Check your email</h2>
             <p className="text-ghost-white/60 text-sm leading-relaxed">
-              A confirmation link was sent to{" "}
-              <span className="text-ghost-white">{email}</span>. Click it to
-              activate your account.
+              A confirmation link was sent to <span className="text-ghost-white">{email}</span>.
+              Click it to activate your account.
             </p>
             <Link
               href="/login"
@@ -108,9 +105,7 @@ export default function SignupPage() {
                 />
               </div>
 
-              {error && (
-                <p className="text-red-400 text-xs font-mono">{error}</p>
-              )}
+              {error && <p className="text-red-400 text-xs font-mono">{error}</p>}
 
               <button
                 type="submit"
@@ -123,10 +118,7 @@ export default function SignupPage() {
 
             <p className="text-center text-muted text-xs">
               Already have an account?{" "}
-              <Link
-                href="/login"
-                className="text-neon-cyan hover:opacity-80 transition-opacity"
-              >
+              <Link href="/login" className="text-neon-cyan hover:opacity-80 transition-opacity">
                 Sign in
               </Link>
             </p>

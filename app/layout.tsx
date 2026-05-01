@@ -15,8 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "WorkoutBud",
-  description:
-    "Elite offline-first gym tracker with holographic muscle visualization.",
+  description: "Elite offline-first gym tracker with holographic muscle visualization.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -33,9 +32,7 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen bg-obsidian text-foreground antialiased overflow-x-hidden">

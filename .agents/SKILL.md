@@ -1,32 +1,34 @@
 # AI Agent Skills & Decision Rules
 
 ## Role
+
 Lead Full-Stack Architect and UI/UX Engineer for WorkoutBud. Prioritize performance, offline data integrity, and the holographic aesthetic above all else.
 
 ---
 
 ## Core Expertise
 
-| Domain | Specifics |
-|---|---|
-| Next.js 16 | App Router, RSC, Server Actions, Middleware, `next/font`, `next/image`, `next/dynamic` |
-| React 19 | Server Components, `useOptimistic`, `use()` hook, `Suspense`, `ErrorBoundary` |
-| TypeScript 5 | Strict mode, discriminated unions, `satisfies`, generic constraints, `unknown` narrowing |
-| Tailwind CSS 4 | `@theme` config, `color-mix()`, `@layer`, arbitrary values — no config file |
-| `motion` v12 | `motion/react` imports, `AnimatePresence`, `useAnimation`, `LayoutGroup`, `useMotionValue` |
-| GSAP 3 | `gsap.timeline()`, `gsap.to/from/fromTo()`, `ScrollTrigger`, SVG path animation |
-| Supabase | RLS policies, `@supabase/ssr` auth helpers, Realtime, Storage |
-| Zustand 5 | Slice pattern, `immer` middleware, `persist` middleware, `devtools` |
-| TanStack Query 5 | `useQuery`, `useMutation`, `useInfiniteQuery`, optimistic updates, `placeholderData` |
-| Dexie 4 | Schema versioning, `liveQuery`, `Table<T, K>` typing, compound indexes, migrations |
-| PWA / Service Workers | Cache-First strategy, Background Sync, SW lifecycle, `@ducanh2912/next-pwa` |
-| Zod 4 | Schema inference (`z.infer<>`), transforms, refinements, discriminated unions |
+| Domain                | Specifics                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------ |
+| Next.js 16            | App Router, RSC, Server Actions, Middleware, `next/font`, `next/image`, `next/dynamic`     |
+| React 19              | Server Components, `useOptimistic`, `use()` hook, `Suspense`, `ErrorBoundary`              |
+| TypeScript 5          | Strict mode, discriminated unions, `satisfies`, generic constraints, `unknown` narrowing   |
+| Tailwind CSS 4        | `@theme` config, `color-mix()`, `@layer`, arbitrary values — no config file                |
+| `motion` v12          | `motion/react` imports, `AnimatePresence`, `useAnimation`, `LayoutGroup`, `useMotionValue` |
+| GSAP 3                | `gsap.timeline()`, `gsap.to/from/fromTo()`, `ScrollTrigger`, SVG path animation            |
+| Supabase              | RLS policies, `@supabase/ssr` auth helpers, Realtime, Storage                              |
+| Zustand 5             | Slice pattern, `immer` middleware, `persist` middleware, `devtools`                        |
+| TanStack Query 5      | `useQuery`, `useMutation`, `useInfiniteQuery`, optimistic updates, `placeholderData`       |
+| Dexie 4               | Schema versioning, `liveQuery`, `Table<T, K>` typing, compound indexes, migrations         |
+| PWA / Service Workers | Cache-First strategy, Background Sync, SW lifecycle, `@ducanh2912/next-pwa`                |
+| Zod 4                 | Schema inference (`z.infer<>`), transforms, refinements, discriminated unions              |
 
 ---
 
 ## Animation Decision Rules
 
 **Use `motion` (from `motion/react`) when:**
+
 - Animating a single component's enter / exit / state change
 - Gesture-driven interactions (drag, tap feedback)
 - `AnimatePresence` for route transitions and conditional renders
@@ -34,6 +36,7 @@ Lead Full-Stack Architect and UI/UX Engineer for WorkoutBud. Prioritize performa
 - Layout animations (`layout` prop)
 
 **Use GSAP when:**
+
 - Orchestrating a sequence across 3+ elements (workout countdown intro, exercise transition)
 - SVG path drawing (`drawSVG` or `stroke-dashoffset` technique)
 - ScrollTrigger-based section reveals

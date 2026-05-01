@@ -11,9 +11,7 @@ export default function HomePage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="holo-border glow-cyan rounded-holo p-10 text-center space-y-4 w-full max-w-xs"
       >
-        <p className="text-muted text-xs font-mono tracking-widest uppercase">
-          System Online
-        </p>
+        <p className="text-muted text-xs font-mono tracking-widest uppercase">System Online</p>
         <h1 className="text-4xl font-bold text-neon-cyan text-glow-cyan tracking-tight">
           WorkoutBud
         </h1>

@@ -40,12 +40,14 @@ Replace the cluttered, ad-heavy fitness apps with a "Modern Luxury" experience â
 ## The Three Screens That Define the Experience
 
 ### 1. The Dashboard
+
 - Today's routine at a glance
 - Body map showing muscle recovery state (color-coded by recency of training)
 - Last session's performance summary
 - One-tap entry into the active workout
 
 ### 2. The Workout Player
+
 - Full-screen, distraction-free
 - Current exercise with a form-guide GIF (pre-fetched, offline-available)
 - Current set number, target reps/weight, input for actual reps/weight
@@ -54,6 +56,7 @@ Replace the cluttered, ad-heavy fitness apps with a "Modern Luxury" experience â
 - Muscle pulse animation on the body map as each set is logged
 
 ### 3. The Exercise Library
+
 - Searchable and filterable exercise catalog
 - The SVG body map is the primary navigation â€” tap a muscle, see its exercises
 - Each exercise has a GIF preview, muscle group tags, and a difficulty indicator
@@ -65,15 +68,16 @@ Replace the cluttered, ad-heavy fitness apps with a "Modern Luxury" experience â
 
 Animate to **communicate state**, not to impress.
 
-| Animation | Purpose |
-|---|---|
-| Muscle pulse on body map | Feedback: "this muscle was just worked" |
-| Slide-in transitions | Orientation: "you moved to a new screen" |
-| Rest timer countdown arc | Urgency: "your rest is ending" |
-| Set completion flash | Reward: "logged successfully" |
-| PB highlight | Celebration: "new record" |
+| Animation                | Purpose                                  |
+| ------------------------ | ---------------------------------------- |
+| Muscle pulse on body map | Feedback: "this muscle was just worked"  |
+| Slide-in transitions     | Orientation: "you moved to a new screen" |
+| Rest timer countdown arc | Urgency: "your rest is ending"           |
+| Set completion flash     | Reward: "logged successfully"            |
+| PB highlight             | Celebration: "new record"                |
 
 **Rules:**
+
 - Entrance animations run once and finish in < 400ms
 - Nothing loops unless it communicates ongoing state (active timer)
 - When in doubt: less animation, more speed
@@ -84,6 +88,7 @@ Animate to **communicate state**, not to impress.
 ## Haptics
 
 Three triggers only:
+
 1. Rest timer reaches zero
 2. A new personal best is logged
 3. Workout session is marked complete
