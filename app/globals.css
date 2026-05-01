@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  /* Obsidian palette */
+  --color-obsidian: #0a0a0f;
+  --color-obsidian-surface: #12121a;
+  --color-obsidian-raised: #1a1a2e;
+
+  /* Neon accents */
+  --color-neon-cyan: #00f2ff;
+  --color-hyper-purple: #9d00ff;
+  --color-ghost-white: #e2e8f0;
+
+  /* Semantic */
+  --color-background: #0a0a0f;
+  --color-foreground: #e2e8f0;
+  --color-muted: #4a5568;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Radii */
+  --radius-holo: 12px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* Holographic glow utilities */
+.glow-cyan {
+  box-shadow:
+    0 0 20px color-mix(in srgb, #00f2ff 25%, transparent),
+    0 0 40px color-mix(in srgb, #00f2ff 10%, transparent);
+}
+
+.glow-purple {
+  box-shadow:
+    0 0 20px color-mix(in srgb, #9d00ff 25%, transparent),
+    0 0 40px color-mix(in srgb, #9d00ff 10%, transparent);
+}
+
+.text-glow-cyan {
+  text-shadow:
+    0 0 10px color-mix(in srgb, #00f2ff 50%, transparent),
+    0 0 20px color-mix(in srgb, #00f2ff 25%, transparent);
+}
+
+.holo-border {
+  border: 1px solid color-mix(in srgb, #00f2ff 30%, transparent);
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, #00f2ff 40%, transparent);
+  border-radius: 2px;
+}

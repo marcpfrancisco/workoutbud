@@ -1,0 +1,26 @@
+{
+  "name": "WorkoutBud",
+  "short_name": "WrkBud",
+  "description": "Elite offline-first gym tracker with holographic muscle visualization",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#00f2ff",
+  "orientation": "portrait-primary",
+  "categories": ["health", "fitness"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
