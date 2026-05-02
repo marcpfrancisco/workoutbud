@@ -92,13 +92,16 @@ export function useExercises(
 
     if (filters.selectedMuscles.length > 0) {
       results = results.filter((e) =>
-        // OR within selected muscles: show exercises that work ANY of the selected muscles
         e.muscleGroups.some((m) => filters.selectedMuscles.includes(m))
       );
     }
 
+    if (filters.selectedCategories.length > 0) {
+      results = results.filter((e) => filters.selectedCategories.includes(e.category));
+    }
+
     return results;
-  }, [data, filters.search, filters.selectedMuscles]);
+  }, [data, filters.search, filters.selectedMuscles, filters.selectedCategories]);
 
   return { exercises, isLoading, isError, error: error ?? null };
 }

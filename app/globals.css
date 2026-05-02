@@ -116,6 +116,20 @@ body {
   cursor: not-allowed;
 }
 
+/* ── Safe area bottom padding (notch / home indicator) ─────────────── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Horizontal scroll strip — hides scrollbar while keeping scroll ── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Scrollbar ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 3px;

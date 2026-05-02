@@ -60,4 +60,5 @@ export interface LibraryExercise {
 export interface ExerciseFilters {
   search: string;
   selectedMuscles: DbMuscleId[];
+  selectedCategories: ExerciseCategory[];
 }

@@ -7,10 +7,18 @@ import { useExercises } from "@/modules/library/hooks/useExercises";
 import { BodyMap } from "@/modules/library/components/BodyMap";
 import { ExerciseList } from "@/modules/library/components/ExerciseList";
 import { MUSCLE_DISPLAY_NAMES } from "@/modules/library/data/muscle-map";
+import type { ExerciseCategory } from "@/modules/library/types";
 
 export default function LibraryPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState<ExerciseCategory[]>([]);
+
+  function toggleCategory(cat: ExerciseCategory) {
+    setSelectedCategories((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  }
 
   const { view, setView, selectedMuscles, toggleMuscleByLibraryId, removeMuscle, clearMuscles } =
     useBodyMap();
@@ -18,6 +26,7 @@ export default function LibraryPage() {
   const { exercises, isLoading, isError } = useExercises(userId, {
     search,
     selectedMuscles,
+    selectedCategories,
   });
 
   useEffect(() => {
@@ -39,6 +48,24 @@ export default function LibraryPage() {
           onChange={(e) => setSearch(e.target.value)}
           className="field"
         />
+        <div className="flex gap-2 overflow-x-auto pb-0.5 no-scrollbar">
+          {(["push", "pull", "legs", "core", "cardio"] as ExerciseCategory[]).map((cat) => {
+            const active = selectedCategories.includes(cat);
+            return (
+              <button
+                key={cat}
+                onClick={() => toggleCategory(cat)}
+                className={`shrink-0 px-3 py-1 text-xs font-medium rounded-full transition-colors ${
+                  active
+                    ? "bg-accent-dim text-accent"
+                    : "text-secondary border border-white/10 hover:border-white/20"
+                }`}
+              >
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Body map */}

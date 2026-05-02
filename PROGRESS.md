@@ -33,8 +33,8 @@
 - [x] Wire body map to exercise filter — tap muscle → exercises filter (OR logic)
 - [x] Offline-capable exercise list — Dexie cache + TanStack Query (`staleTime: Infinity`)
 - [x] GIF lazy-loading with skeleton fallback (`loading="lazy"` + animate-pulse)
-- [ ] **[NEXT]** Category filter chips (push / pull / legs / core / cardio)
-- [ ] Exercise detail sheet — instructions, full GIF view
+- [x] Category filter chips (push / pull / legs / core / cardio)
+- [ ] **[NEXT]** Exercise detail sheet — instructions, full GIF view
 
 ---
 
