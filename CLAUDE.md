@@ -111,25 +111,41 @@ One file = one component. No barrel files exporting 10+ things.
 
 No `tailwind.config.js`. All design tokens live in `app/globals.css` inside `@theme {}`.
 
+### Design Direction
+
+**Modern luxury minimal.** Clean, precise, confident. No glows, no neon, no holographic effects.
+Think: Vercel, Linear, high-end athletic hardware. Typography and whitespace do the work.
+
 ### Color Tokens
 
-| CSS Variable               | Hex       | Tailwind Class                       |
-| -------------------------- | --------- | ------------------------------------ |
-| `--color-obsidian`         | `#0a0a0f` | `bg-obsidian`, `text-obsidian`       |
-| `--color-obsidian-surface` | `#12121a` | `bg-obsidian-surface`                |
-| `--color-obsidian-raised`  | `#1a1a2e` | `bg-obsidian-raised`                 |
-| `--color-neon-cyan`        | `#00f2ff` | `text-neon-cyan`, `border-neon-cyan` |
-| `--color-hyper-purple`     | `#9d00ff` | `text-hyper-purple`                  |
-| `--color-ghost-white`      | `#e2e8f0` | `text-ghost-white`                   |
-| `--color-muted`            | `#4a5568` | `text-muted`                         |
+| CSS Variable              | Hex / Value                  | Tailwind Class                     |
+| ------------------------- | ---------------------------- | ---------------------------------- |
+| `--color-canvas`          | `#0C0C0C`                    | `bg-canvas`                        |
+| `--color-surface`         | `#161616`                    | `bg-surface`                       |
+| `--color-surface-raised`  | `#202020`                    | `bg-surface-raised`                |
+| `--color-surface-overlay` | `#2B2B2B`                    | `bg-surface-overlay`               |
+| `--color-primary`         | `#F0F0F0`                    | `text-primary`                     |
+| `--color-secondary`       | `#888888`                    | `text-secondary`                   |
+| `--color-tertiary`        | `#444444`                    | `text-tertiary`                    |
+| `--color-accent`          | `#5A9EF8`                    | `text-accent`, `bg-accent`         |
+| `--color-accent-dim`      | `#1A2A3F`                    | `bg-accent-dim`                    |
+| `--color-error`           | `#F87171`                    | `text-error`                       |
+| `--color-success`         | `#4ADE80`                    | `text-success`                     |
 
-### Custom Utilities (defined in globals.css)
+### Radii
 
-- `.glow-cyan` — Cyan box-shadow
-- `.glow-purple` — Purple box-shadow
-- `.text-glow-cyan` — Cyan text-shadow
-- `.holo-border` — Semi-transparent cyan border
-- `.rounded-holo` — 12px radius (from `--radius-holo`)
+| Token          | Value  |
+| -------------- | ------ |
+| `--radius-sm`  | `8px`  |
+| `--radius-md`  | `12px` |
+| `--radius-lg`  | `18px` |
+
+### Component Utilities (defined in globals.css)
+
+- `.card` — surface background + 7% white border + `--radius-md`
+- `.card-raised` — elevated card on `--color-surface-raised`
+- `.field` — dark input well, brightens border on focus (no glow)
+- `.btn` — solid accent fill, white text, `--radius-sm`
 
 ### Rules
 

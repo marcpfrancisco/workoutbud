@@ -34,50 +34,50 @@ export default function SignupPage() {
       {submitted ? (
         <motion.div
           key="success"
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.3 }}
           className="w-full max-w-sm"
         >
-          <div className="holo-border glow-cyan rounded-holo p-8 text-center space-y-4">
-            <div className="text-4xl">✉️</div>
-            <h2 className="text-lg font-bold text-neon-cyan text-glow-cyan">Check your email</h2>
-            <p className="text-ghost-white/60 text-sm leading-relaxed">
-              A confirmation link was sent to <span className="text-ghost-white">{email}</span>.
-              Click it to activate your account.
-            </p>
+          <div className="card p-8 space-y-4">
+            <div className="w-10 h-10 rounded-full bg-surface-raised flex items-center justify-center">
+              <span className="text-lg">✉</span>
+            </div>
+            <div className="space-y-1">
+              <h2 className="text-base font-semibold text-primary">Check your email</h2>
+              <p className="text-secondary text-sm leading-relaxed">
+                Confirmation sent to{" "}
+                <span className="text-primary">{email}</span>.
+              </p>
+            </div>
             <Link
               href="/login"
-              className="block text-neon-cyan text-xs hover:opacity-80 transition-opacity"
+              className="text-secondary text-xs hover:text-primary transition-colors"
             >
-              Back to sign in
+              ← Back to sign in
             </Link>
           </div>
         </motion.div>
       ) : (
         <motion.div
           key="form"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="w-full max-w-sm"
         >
-          <div className="holo-border glow-cyan rounded-holo p-8 space-y-6">
-            <div className="space-y-1 text-center">
-              <h1 className="text-2xl font-bold text-neon-cyan text-glow-cyan tracking-tight">
-                WorkoutBud
+          <div className="card p-8 space-y-7">
+            <div className="space-y-1">
+              <h1 className="text-xl font-semibold text-primary tracking-tight">
+                Create account
               </h1>
-              <p className="text-muted text-xs font-mono tracking-widest uppercase">
-                Create Account
-              </p>
+              <p className="text-secondary text-sm">Join WorkoutBud</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs text-muted font-mono uppercase tracking-wider">
-                  Email
-                </label>
+              <div className="space-y-1.5">
+                <label className="text-xs text-secondary font-medium">Email</label>
                 <input
                   type="email"
                   value={email}
@@ -85,14 +85,12 @@ export default function SignupPage() {
                   required
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full bg-obsidian-surface border border-obsidian-raised focus:border-neon-cyan rounded-holo px-4 py-3 text-ghost-white text-sm outline-none transition-colors placeholder:text-muted/50"
+                  className="field"
                 />
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs text-muted font-mono uppercase tracking-wider">
-                  Password
-                </label>
+              <div className="space-y-1.5">
+                <label className="text-xs text-secondary font-medium">Password</label>
                 <input
                   type="password"
                   value={password}
@@ -101,24 +99,23 @@ export default function SignupPage() {
                   minLength={8}
                   autoComplete="new-password"
                   placeholder="Min 8 characters"
-                  className="w-full bg-obsidian-surface border border-obsidian-raised focus:border-neon-cyan rounded-holo px-4 py-3 text-ghost-white text-sm outline-none transition-colors placeholder:text-muted/50"
+                  className="field"
                 />
               </div>
 
-              {error && <p className="text-red-400 text-xs font-mono">{error}</p>}
+              {error && <p className="text-error text-xs">{error}</p>}
 
-              <button
-                type="submit"
-                disabled={isPending}
-                className="w-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan font-semibold rounded-holo py-3 text-sm tracking-wide transition-all hover:bg-neon-cyan/20 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                {isPending ? "Creating account…" : "Create Account"}
+              <button type="submit" disabled={isPending} className="btn mt-2">
+                {isPending ? "Creating account…" : "Create account"}
               </button>
             </form>
 
-            <p className="text-center text-muted text-xs">
+            <p className="text-secondary text-xs text-center">
               Already have an account?{" "}
-              <Link href="/login" className="text-neon-cyan hover:opacity-80 transition-opacity">
+              <Link
+                href="/login"
+                className="text-primary hover:text-accent transition-colors"
+              >
                 Sign in
               </Link>
             </p>

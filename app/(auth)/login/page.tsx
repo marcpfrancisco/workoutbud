@@ -19,10 +19,7 @@ export default function LoginPage() {
 
     startTransition(async () => {
       const supabase = createClient();
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         setError(error.message);
@@ -36,22 +33,20 @@ export default function LoginPage() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
       className="w-full max-w-sm"
     >
-      <div className="holo-border glow-cyan rounded-holo p-8 space-y-6">
-        <div className="space-y-1 text-center">
-          <h1 className="text-2xl font-bold text-neon-cyan text-glow-cyan tracking-tight">
-            WorkoutBud
-          </h1>
-          <p className="text-muted text-xs font-mono tracking-widest uppercase">Sign In</p>
+      <div className="card p-8 space-y-7">
+        <div className="space-y-1">
+          <h1 className="text-xl font-semibold text-primary tracking-tight">Sign in</h1>
+          <p className="text-secondary text-sm">Welcome back to WorkoutBud</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1">
-            <label className="text-xs text-muted font-mono uppercase tracking-wider">Email</label>
+          <div className="space-y-1.5">
+            <label className="text-xs text-secondary font-medium">Email</label>
             <input
               type="email"
               value={email}
@@ -59,14 +54,12 @@ export default function LoginPage() {
               required
               autoComplete="email"
               placeholder="you@example.com"
-              className="w-full bg-obsidian-surface border border-obsidian-raised focus:border-neon-cyan rounded-holo px-4 py-3 text-ghost-white text-sm outline-none transition-colors placeholder:text-muted/50"
+              className="field"
             />
           </div>
 
-          <div className="space-y-1">
-            <label className="text-xs text-muted font-mono uppercase tracking-wider">
-              Password
-            </label>
+          <div className="space-y-1.5">
+            <label className="text-xs text-secondary font-medium">Password</label>
             <input
               type="password"
               value={password}
@@ -74,25 +67,23 @@ export default function LoginPage() {
               required
               autoComplete="current-password"
               placeholder="••••••••"
-              className="w-full bg-obsidian-surface border border-obsidian-raised focus:border-neon-cyan rounded-holo px-4 py-3 text-ghost-white text-sm outline-none transition-colors placeholder:text-muted/50"
+              className="field"
             />
           </div>
 
-          {error && <p className="text-red-400 text-xs font-mono">{error}</p>}
+          {error && (
+            <p className="text-error text-xs">{error}</p>
+          )}
 
-          <button
-            type="submit"
-            disabled={isPending}
-            className="w-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan font-semibold rounded-holo py-3 text-sm tracking-wide transition-all hover:bg-neon-cyan/20 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
-          >
-            {isPending ? "Signing in…" : "Sign In"}
+          <button type="submit" disabled={isPending} className="btn mt-2">
+            {isPending ? "Signing in…" : "Sign in"}
           </button>
         </form>
 
-        <p className="text-center text-muted text-xs">
+        <p className="text-secondary text-xs text-center">
           No account?{" "}
-          <Link href="/signup" className="text-neon-cyan hover:opacity-80 transition-opacity">
-            Sign up
+          <Link href="/signup" className="text-primary hover:text-accent transition-colors">
+            Create one
           </Link>
         </p>
       </div>

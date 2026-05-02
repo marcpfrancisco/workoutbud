@@ -1,29 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Obsidian palette */
-  --color-obsidian: #0a0a0f;
-  --color-obsidian-surface: #12121a;
-  --color-obsidian-raised: #1a1a2e;
+  /* ── Backgrounds ───────────────────────────────────────────── */
+  --color-canvas:          #0C0C0C;
+  --color-surface:         #161616;
+  --color-surface-raised:  #202020;
+  --color-surface-overlay: #2B2B2B;
 
-  /* Neon accents */
-  --color-neon-cyan: #00f2ff;
-  --color-hyper-purple: #9d00ff;
-  --color-ghost-white: #e2e8f0;
+  /* ── Text ──────────────────────────────────────────────────── */
+  --color-primary:   #F0F0F0;
+  --color-secondary: #888888;
+  --color-tertiary:  #444444;
 
-  /* Semantic */
-  --color-background: #0a0a0f;
-  --color-foreground: #e2e8f0;
-  --color-muted: #4a5568;
+  /* ── Single accent — precise, not neon ─────────────────────── */
+  --color-accent:     #5A9EF8;
+  --color-accent-dim: #1A2A3F;
 
-  /* Typography */
+  /* ── Semantic ──────────────────────────────────────────────── */
+  --color-error:   #F87171;
+  --color-success: #4ADE80;
+
+  /* ── Typography ────────────────────────────────────────────── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Radii */
-  --radius-holo: 12px;
+  /* ── Radii ──────────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 }
 
+/* ── Base ──────────────────────────────────────────────────────── */
 :root {
   color-scheme: dark;
 }
@@ -35,44 +42,88 @@
 }
 
 body {
-  background-color: #0a0a0f;
-  color: #e2e8f0;
+  background-color: #0C0C0C;
+  color: #F0F0F0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
 }
 
-/* Holographic glow utilities */
-.glow-cyan {
-  box-shadow:
-    0 0 20px color-mix(in srgb, #00f2ff 25%, transparent),
-    0 0 40px color-mix(in srgb, #00f2ff 10%, transparent);
+/* ── Component utilities ───────────────────────────────────────── */
+
+/* Card — subtle lift over canvas, no glow */
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
 }
 
-.glow-purple {
-  box-shadow:
-    0 0 20px color-mix(in srgb, #9d00ff 25%, transparent),
-    0 0 40px color-mix(in srgb, #9d00ff 10%, transparent);
+.card-raised {
+  background-color: var(--color-surface-raised);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
 }
 
-.text-glow-cyan {
-  text-shadow:
-    0 0 10px color-mix(in srgb, #00f2ff 50%, transparent),
-    0 0 20px color-mix(in srgb, #00f2ff 25%, transparent);
+/* Input — dark well, brightens on focus */
+.field {
+  width: 100%;
+  background-color: var(--color-surface-raised);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  outline: none;
+  transition: border-color 150ms ease;
 }
 
-.holo-border {
-  border: 1px solid color-mix(in srgb, #00f2ff 30%, transparent);
+.field::placeholder {
+  color: var(--color-tertiary);
 }
 
-/* Thin scrollbar */
+.field:focus {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Button — primary */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 150ms ease, transform 100ms ease;
+}
+
+.btn:hover {
+  opacity: 0.88;
+}
+
+.btn:active {
+  transform: scale(0.985);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, #00f2ff 40%, transparent);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 2px;
 }

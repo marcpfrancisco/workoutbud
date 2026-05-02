@@ -16,4 +16,5 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
 
-export default withPWA(nextConfig);
+// PWA webpack plugin conflicts with Turbopack in dev; apply only for production builds
+export default process.env.NODE_ENV === "production" ? withPWA(nextConfig) : nextConfig;

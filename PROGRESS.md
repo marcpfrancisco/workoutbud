@@ -2,16 +2,16 @@
 
 ## Current Status
 
-**Phase 1 complete** — Ready to generate Supabase types, then moving to Phase 2.
+**Phase 2 in progress** — Library page + body map complete. Remaining: category filter, GIF assets.
 
 ---
 
 ## Phase 1: Core Foundation 🏗️
 
 - [x] Initialize Next.js 16 with PWA support (`@ducanh2912/next-pwa`)
-- [x] Configure Tailwind v4 with holographic design system (`app/globals.css`)
+- [x] Configure Tailwind v4 with modern luxury minimal design system (`app/globals.css`)
 - [x] Setup PWA manifest (`public/manifest.json`)
-- [x] Implement Mobile-only Guard — middleware + `/desktop-blocked` page
+- [x] Implement Mobile-only Guard — proxy + `/desktop-blocked` page
 - [x] Setup Supabase browser + server clients (`core/supabase/`)
 - [x] Configure IndexedDB with Dexie.js — full schema + types (`core/db/schema.ts`)
 - [x] Build Sync Outbox worker — online listener + flush logic (`core/sync/outbox.ts`)
@@ -19,19 +19,22 @@
 - [x] Scaffold module folder structure (`modules/workout`, `modules/routine`, `modules/library`)
 - [x] Create Supabase schema — tables, indexes, RLS policies, `updated_at` trigger
 - [x] Seed global exercise library (40 exercises across push/pull/legs/core/cardio)
-- [x] Setup Supabase Auth — sign-in, sign-up pages, session middleware, email callback
-- [ ] **[NEXT]** Generate Supabase TypeScript types — run: `npx supabase gen types typescript --project-id YOUR_PROJECT_ID > core/supabase/database.types.ts`
+- [x] Setup Supabase Auth — sign-in, sign-up pages, session proxy, email callback
+- [x] ESLint + Prettier configured, `npm run gen:types` script added
 
 ---
 
-## Phase 2: The Hologram Library 🧞
+## Phase 2: Exercise Library
 
-- [ ] Design SVG Human Body Map — front + back views, interactive muscle paths
-- [ ] Implement per-muscle highlight and pulse animation (`motion` + GSAP)
-- [ ] Build Exercise Library page — search, filter by muscle/category
-- [ ] Wire body map to exercise filter — tap muscle → show exercises
-- [ ] Implement offline-capable exercise list — Dexie cache + TanStack Query
-- [ ] GIF lazy-loading with skeleton fallback state
+- [x] Interactive SVG body map — front + back views, tap-to-select muscles (`react-body-highlighter`)
+- [x] Per-muscle highlight in accent blue, fade transition on front/back toggle (`motion`)
+- [x] Exercise Library page — `/library` route (`app/library/page.tsx`)
+- [x] Search filter — real-time name search
+- [x] Wire body map to exercise filter — tap muscle → exercises filter (OR logic)
+- [x] Offline-capable exercise list — Dexie cache + TanStack Query (`staleTime: Infinity`)
+- [x] GIF lazy-loading with skeleton fallback (`loading="lazy"` + animate-pulse)
+- [ ] **[NEXT]** Category filter chips (push / pull / legs / core / cardio)
+- [ ] Exercise detail sheet — instructions, full GIF view
 
 ---
 
