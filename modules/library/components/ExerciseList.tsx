@@ -7,6 +7,7 @@ interface ExerciseListProps {
   exercises: LibraryExercise[];
   isLoading: boolean;
   isError: boolean;
+  onExerciseSelect?: (exercise: LibraryExercise) => void;
 }
 
 function SkeletonCard() {
@@ -15,7 +16,7 @@ function SkeletonCard() {
   );
 }
 
-export function ExerciseList({ exercises, isLoading, isError }: ExerciseListProps) {
+export function ExerciseList({ exercises, isLoading, isError, onExerciseSelect }: ExerciseListProps) {
   if (isLoading) {
     return (
       <div className="space-y-2">
@@ -46,7 +47,12 @@ export function ExerciseList({ exercises, isLoading, isError }: ExerciseListProp
         {exercises.length === 1 ? "1 exercise" : `${exercises.length} exercises`}
       </p>
       {exercises.map((exercise, index) => (
-        <ExerciseCard key={exercise.id} exercise={exercise} index={index} />
+        <ExerciseCard
+          key={exercise.id}
+          exercise={exercise}
+          index={index}
+          onTap={() => onExerciseSelect?.(exercise)}
+        />
       ))}
     </div>
   );

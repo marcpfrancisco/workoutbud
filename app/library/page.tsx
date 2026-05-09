@@ -6,13 +6,15 @@ import { useBodyMap } from "@/modules/library/hooks/useBodyMap";
 import { useExercises } from "@/modules/library/hooks/useExercises";
 import { BodyMap } from "@/modules/library/components/BodyMap";
 import { ExerciseList } from "@/modules/library/components/ExerciseList";
+import { ExerciseDetailSheet } from "@/modules/library/components/ExerciseDetailSheet";
 import { MUSCLE_DISPLAY_NAMES } from "@/modules/library/data/muscle-map";
-import type { ExerciseCategory } from "@/modules/library/types";
+import type { ExerciseCategory, LibraryExercise } from "@/modules/library/types";
 
 export default function LibraryPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<ExerciseCategory[]>([]);
+  const [selectedExercise, setSelectedExercise] = useState<LibraryExercise | null>(null);
 
   function toggleCategory(cat: ExerciseCategory) {
     setSelectedCategories((prev) =>
@@ -105,8 +107,19 @@ export default function LibraryPage() {
 
       {/* Exercise list */}
       <div className="px-4">
-        <ExerciseList exercises={exercises} isLoading={isLoading} isError={isError} />
+        <ExerciseList
+          exercises={exercises}
+          isLoading={isLoading}
+          isError={isError}
+          onExerciseSelect={setSelectedExercise}
+        />
       </div>
+
+      {/* Exercise detail bottom sheet */}
+      <ExerciseDetailSheet
+        exercise={selectedExercise}
+        onClose={() => setSelectedExercise(null)}
+      />
     </main>
   );
 }

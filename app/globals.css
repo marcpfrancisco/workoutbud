@@ -24,10 +24,11 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* ── Radii ──────────────────────────────────────────────────── */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  /* ── Radii — rounder across the board ──────────────────────── */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 26px;
+  --radius-xl: 32px;
 }
 
 /* ── Base ──────────────────────────────────────────────────────── */
@@ -51,7 +52,6 @@ body {
 
 /* ── Component utilities ───────────────────────────────────────── */
 
-/* Card — subtle lift over canvas, no glow */
 .card {
   background-color: var(--color-surface);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -64,7 +64,6 @@ body {
   border-radius: var(--radius-md);
 }
 
-/* Input — dark well, brightens on focus */
 .field {
   width: 100%;
   background-color: var(--color-surface-raised);
@@ -85,7 +84,6 @@ body {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
-/* Button — primary */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -93,7 +91,7 @@ body {
   width: 100%;
   background-color: var(--color-accent);
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.01em;
   border-radius: var(--radius-sm);
@@ -103,41 +101,93 @@ body {
   transition: opacity 150ms ease, transform 100ms ease;
 }
 
-.btn:hover {
-  opacity: 0.88;
-}
+.btn:hover  { opacity: 0.88; }
+.btn:active { transform: scale(0.985); }
+.btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
-.btn:active {
-  transform: scale(0.985);
-}
-
-.btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* ── Safe area bottom padding (notch / home indicator) ─────────────── */
+/* ── Safe area & scrollbar helpers ────────────────────────────── */
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* ── Horizontal scroll strip — hides scrollbar while keeping scroll ── */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
-/* ── Scrollbar ──────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.12);
   border-radius: 2px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ════════════════════════════════════════════════════════════════ */
+
+/* 🔥 Fire — wobble + scale for streak emoji */
+@keyframes fire {
+  0%, 100% { transform: scale(1) rotate(-4deg); }
+  25%       { transform: scale(1.15) rotate(4deg); }
+  75%       { transform: scale(1.1) rotate(-2deg); }
+}
+
+/* ○ Ping ring — slow outward pulse for today indicator */
+@keyframes ping-slow {
+  0%        { transform: scale(1); opacity: 0.45; }
+  70%, 100% { transform: scale(1.75); opacity: 0; }
+}
+
+/* ▬ Shimmer — horizontal sweep across progress bars */
+@keyframes shimmer {
+  from { transform: translateX(-200%); }
+  to   { transform: translateX(200%); }
+}
+
+/* ↑↓ Float — gentle levitation for unlocked achievement icons */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ◎ Fade-pulse — ambient breathing on muted elements */
+@keyframes fade-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+/* ── Animation utility classes ─────────────────────────────────── */
+
+.animate-fire {
+  display: inline-block;
+  animation: fire 2s ease-in-out infinite;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-float {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-pulse {
+  animation: fade-pulse 2.5s ease-in-out infinite;
+}
+
+/* Shimmer is applied via a child element inside overflow:hidden */
+.shimmer-child {
+  position: absolute;
+  inset: 0;
+  width: 55%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  animation: shimmer 2.2s ease-in-out infinite;
 }

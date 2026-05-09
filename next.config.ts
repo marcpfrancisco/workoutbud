@@ -14,6 +14,7 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  allowedDevOrigins: ["localhost", "192.168.64.169"],
 };
 
 // PWA webpack plugin conflicts with Turbopack in dev; apply only for production builds

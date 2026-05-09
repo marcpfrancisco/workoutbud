@@ -17,9 +17,10 @@ const CATEGORY_LABELS: Record<string, string> = {
 interface ExerciseCardProps {
   exercise: LibraryExercise;
   index: number;
+  onTap?: () => void;
 }
 
-export function ExerciseCard({ exercise, index }: ExerciseCardProps) {
+export function ExerciseCard({ exercise, index, onTap }: ExerciseCardProps) {
   const [gifLoaded, setGifLoaded] = useState(false);
   const [gifError, setGifError] = useState(false);
 
@@ -31,11 +32,12 @@ export function ExerciseCard({ exercise, index }: ExerciseCardProps) {
   const showGif = exercise.gifUrl && !gifError;
 
   return (
-    <motion.div
+    <motion.button
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: "easeOut", delay: Math.min(index * 0.04, 0.3) }}
-      className="card p-4 flex items-center gap-4"
+      onClick={onTap}
+      className="card p-4 flex items-center gap-4 w-full text-left active:opacity-75 transition-opacity"
     >
       {/* GIF / placeholder slot */}
       <div className="relative w-14 h-14 shrink-0">
@@ -72,6 +74,6 @@ export function ExerciseCard({ exercise, index }: ExerciseCardProps) {
         </div>
         <p className="text-xs text-secondary mt-0.5 truncate">{muscleLabel}</p>
       </div>
-    </motion.div>
+    </motion.button>
   );
 }
